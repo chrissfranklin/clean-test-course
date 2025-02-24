@@ -37,7 +37,10 @@ describe('Test Order', () => {
     );
     //Assert: replace the return true.
     await waitFor(() => {
-      return true;
+      //return true;      
+      //expect().toHaveLength(1);
+      const deliveryFeeElement = screen.getByText(/2.5/i); // Assuming 2.5 is shown in the UI
+      expect(deliveryFeeElement).toBeInTheDocument();
     });
   });
 
@@ -62,8 +65,10 @@ describe('Test Order', () => {
       screen.getByRole('option', { name: '5 miles' })
     );
     //Assert: replace the return true.
-    await waitFor(() => {
-      return true;
+    await waitFor(() => {      
+      //expect().toHaveLength(1);  //return true;
+      const updatedDeliveryFeeElement = screen.getByText(/5.0/i); // Assuming 5.0 is shown in the UI
+      expect(updatedDeliveryFeeElement).toBeInTheDocument();
     });
   });
 });
